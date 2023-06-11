@@ -1,12 +1,14 @@
 import express, { Application, Request, Response } from 'express'
 import cors from 'cors'
-
+import usersRouter from '../src/app/modules/users/users.route'
 const app: Application = express()
 
 app.use(cors())
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+
+app.use('/api/v1/users/', usersRouter)
 
 // respond with "hello world" when a GET request is made to the homepage
 app.get('/', (req: Request, res: Response) => {
